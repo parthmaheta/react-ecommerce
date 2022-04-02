@@ -11,6 +11,7 @@ const root = createRoot(rootElement)
 root.render(
   <StrictMode>
     <Provider store={store}>
+      
       <App />
     </Provider>
   </StrictMode>
