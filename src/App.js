@@ -1,3 +1,4 @@
+import React from "react"
 import Router from "./Compoenents/Router"
 
 function App() {
