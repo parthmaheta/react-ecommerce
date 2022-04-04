@@ -1,0 +1,13 @@
+.text-info {
+  font-size: 3rem;
+  text-align: center;
+  color: black;
+}
+.link {
+  margin: auto;
+  color: black;
+  font-size: 1.5rem;
+}
+.link:hover {
+  text-decoration-color: blue;
+}
