@@ -5,6 +5,7 @@ It Uses https://fakestoreapi.com/docs API To Fetch The Products
 
 -> it has login page which is static user name & password
 -> it has product listing page which shows products list
+-> product can be sorted & searched
 -> it has product page which shows specific product
 -> it has cart page which shows all the added product & total
 
