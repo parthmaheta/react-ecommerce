@@ -13,8 +13,8 @@ export default function Login() {
   const dispatch = useDispatch()
 
   const handleSubmit = () => {
-    if (username == "hellobar") {
-      if (password == "hellobar") {
+    if (username === "hellobar") {
+      if (password === "hellobar") {
         dispatch({ type: LOGIN_SUCCESS })
       } else {
         setError({ userError: false, passError: "Invalid Password" })
@@ -49,7 +49,3 @@ export default function Login() {
     )
   }
 }
-
-
-
-

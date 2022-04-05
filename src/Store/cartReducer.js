@@ -6,7 +6,7 @@ export function cartReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_TO_CART:
       const index = state.findIndex(
-        (product) => product.id == action.payload.id
+        (product) => product.id === action.payload.id
       )
       if (index > -1) {
         state[index].quantity += action.payload.quantity
@@ -15,7 +15,7 @@ export function cartReducer(state = initialState, action) {
       }
       return [...state]
     case REMOVE_FROM_CART:
-      return [...state.filter((product) => product.id != action.payload.id)]
+      return [...state.filter((product) => product.id !== action.payload.id)]
 
     default:
       return state

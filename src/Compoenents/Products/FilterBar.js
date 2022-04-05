@@ -1,7 +1,7 @@
 import React from "react"
 export function FilterBar({ sortBy, setSortBy, searchText, setSearchText }) {
   const changeOrder = () => {
-    sortBy == "asc" ? setSortBy("dsc") : setSortBy("asc")
+    sortBy === "asc" ? setSortBy("dsc") : setSortBy("asc")
   }
 
   return (

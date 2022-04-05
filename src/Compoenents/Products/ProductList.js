@@ -32,7 +32,7 @@ function Pagination({ currentPage, setCurrentPage, maxProducts }) {
     <div className="pagination">
       <button
         onClick={() => setCurrentPage(currentPage - 1)}
-        disabled={currentPage == 1}
+        disabled={currentPage === 1}
       >
         Previous
       </button>

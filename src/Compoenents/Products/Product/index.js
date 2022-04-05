@@ -5,10 +5,11 @@ import Header from "../../Header"
 import ShowProduct from "./ShowProduct"
 
 function Product() {
-  const { id } = useParams()
+  let { id } = useParams()
+  id = parseInt(id)
 
   const product = useSelector((state) => {
-    return state.products.products.find((product) => product.id == id)
+    return state.products.products.find((product) => product.id === id)
   })
 
   return (

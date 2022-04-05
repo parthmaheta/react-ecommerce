@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom"
 export function ProductsPage({ products, sortBy }) {
   return (
     <div className="products-container">
-      {sortBy == "asc"
+      {sortBy === "asc"
         ? products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))
