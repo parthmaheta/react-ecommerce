@@ -1,29 +1,40 @@
-import React from "react"
-import { NavLink } from "react-router-dom"
+import React, { useState } from "react"
+import { FilterBar } from "./FilterBar"
+import { ProductsList } from "./ProductList"
 
 export default function ShowProducts({ products }) {
+  const [sortBy, setSortBy] = useState("asc")
+  const [searchText, setSearchText] = useState("")
+
   return (
-    <div className="products-container">
-      {products.map((product) => (
-        <ProductInfo key={product.id} product={product} />
-      ))}
-    </div>
+    <>
+      <FilterBar
+        setSortBy={setSortBy}
+        sortBy={sortBy}
+        searchText={searchText}
+        setSearchText={setSearchText}
+      />
+
+      <ProductsList
+        products={searchProductsWithSort(products, searchText, sortBy)}
+      />
+    </>
   )
 }
 
-function ProductInfo({ product }) {
-  return (
-    <NavLink to={"./" + product.id} className="text-decoration-none">
-      <div className="product-info">
-        <img src={product.image} alt={product.title} className="product-img" />
-        <div className="product-info-text">
-          <span className="product-title">{product.title}</span>
-          <span className="product-price">Just: ${product.price}</span>
-          <span className="rating">Rating :{product.rating.rate}/5</span>
+function searchProductsWithSort(products, searchText, sortBy) {
+  if (searchText.length === 0)
+    return sortBy == "asc" ? products : copyWithReverseArray(products)
 
-          <span className="rating"> {product.rating.count} People Rated</span>
-        </div>
-      </div>
-    </NavLink>
-  )
+  var newArr = products.filter((product) => {
+    return (
+      product.title.toLowerCase().includes(searchText.toLowerCase()) ||
+      product.category.toLowerCase().includes(searchText.toLowerCase())
+    )
+  })
+  return sortBy == "asc" ? newArr : copyWithReverseArray(newArr)
+}
+
+function copyWithReverseArray(arr) {
+  return JSON.parse(JSON.stringify(arr)).reverse()
 }
