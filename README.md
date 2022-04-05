@@ -1,3 +1,25 @@
+React Ecommerce Page
+It Uses React,Redux&React Router Dom v6.
+
+It Uses https://fakestoreapi.com/docs API To Fetch The Products
+
+-> it has login page which is static user name & password
+-> it has product listing page which shows products list
+-> it has product page which shows specific product
+-> it has cart page which shows all the added product & total
+
+To Run This Project
+In the project directory, you can run:
+
+### `npm install`
+
+to run project
+
+### `npm start`
+
+project developed by parth maheta
+contact me for help
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
