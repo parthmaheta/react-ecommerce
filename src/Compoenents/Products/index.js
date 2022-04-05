@@ -15,6 +15,7 @@ export default function Products(props) {
   }, [])
 
   useEffect(() => {
+    //if products is empty, fetch data
     if (products.products.length === 0) fetchData()
   }, [])
 

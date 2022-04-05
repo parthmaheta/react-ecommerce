@@ -23,6 +23,7 @@ export default function ShowProducts({ products }) {
   )
 }
 
+//return only products that match the search text
 function searchProducts(products, searchText) {
   if (searchText.length === 0) return products
 
