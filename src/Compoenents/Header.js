@@ -1,6 +1,7 @@
 import React from "react"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
+import { LOGOUT } from "../Store/constants"
 import "./Header.css"
 
 function countTotalItem(arr) {
@@ -16,9 +17,10 @@ function Header() {
 
   return (
     <div className="header">
-      <NavLink to="/products" className="Logo">
+      <NavLink to="/" className="Logo">
         HelloBar
       </NavLink>
+
       <NavLink to="/cart" className="cart position-relative">
         <span className="position-absolute bottom text-bold">Chekout</span>
         <img src="./cart.png" alt="cart icon" title="View Cart" />

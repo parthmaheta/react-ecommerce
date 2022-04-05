@@ -1,7 +1,7 @@
 import { LOGIN_SUCCESS, LOGOUT } from "./constants"
 
 const initialState = {
-  isLogged: true,
+  isLogged: false,
 }
 
 export function loginReducer(state = initialState, action) {

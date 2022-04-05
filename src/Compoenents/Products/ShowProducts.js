@@ -16,15 +16,15 @@ export default function ShowProducts({ products }) {
       />
 
       <ProductsList
-        products={searchProductsWithSort(products, searchText, sortBy)}
+        products={searchProducts(products, searchText)}
+        sortBy={sortBy}
       />
     </>
   )
 }
 
-function searchProductsWithSort(products, searchText, sortBy) {
-  if (searchText.length === 0)
-    return sortBy == "asc" ? products : copyWithReverseArray(products)
+function searchProducts(products, searchText) {
+  if (searchText.length === 0) return products
 
   var newArr = products.filter((product) => {
     return (
@@ -32,9 +32,5 @@ function searchProductsWithSort(products, searchText, sortBy) {
       product.category.toLowerCase().includes(searchText.toLowerCase())
     )
   })
-  return sortBy == "asc" ? newArr : copyWithReverseArray(newArr)
-}
-
-function copyWithReverseArray(arr) {
-  return JSON.parse(JSON.stringify(arr)).reverse()
+  return newArr
 }

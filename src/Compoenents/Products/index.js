@@ -15,7 +15,7 @@ export default function Products(props) {
   }, [])
 
   useEffect(() => {
-    // fetchData()
+    fetchData()
   }, [])
 
   return (
