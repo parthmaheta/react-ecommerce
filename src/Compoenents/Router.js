@@ -24,7 +24,10 @@ export default function(props) {
             />
           </Route>
 
-          <Route path="cart" element={<Cart />} />
+          <Route
+            path="cart"
+            element={isLogged ? <Cart /> : <Navigate to="/" />}
+          />
           <Route index element={<Login />} />
           <Route path="*" element={<h1>Sorry Page Doesnt Exist...</h1>} />
         </Route>
