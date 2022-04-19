@@ -5,6 +5,7 @@ import { ProductsList } from "./ProductList"
 export default function ShowProducts({ products }) {
   const [sortBy, setSortBy] = useState("asc")
   const [searchText, setSearchText] = useState("")
+  const [selectedCategory, setselectedCategory] = useState("")
 
   return (
     <>
@@ -13,11 +14,17 @@ export default function ShowProducts({ products }) {
         sortBy={sortBy}
         searchText={searchText}
         setSearchText={setSearchText}
+        selectedCategory={selectedCategory}
+        setselectedCategory={setselectedCategory}
       />
 
       <ProductsList
-        products={searchProducts(products, searchText)}
+        products={chooseCategory(
+          searchProducts(products, searchText),
+          selectedCategory
+        )}
         sortBy={sortBy}
+        selectedCategory={selectedCategory}
       />
     </>
   )
@@ -34,4 +41,12 @@ function searchProducts(products, searchText) {
     )
   })
   return newArr
+}
+
+//return only product whoose category is mathching
+function chooseCategory(products, selectedCategory) {
+  //if selected category is empty it means not selected any category
+  if (selectedCategory === "") return products
+  else
+    return products.filter((product) => product.category === selectedCategory)
 }

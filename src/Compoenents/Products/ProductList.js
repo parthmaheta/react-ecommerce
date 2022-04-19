@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 
 import { ProductsPage } from "./ProductPage"
-export function ProductsList({ products, sortBy }) {
+export function ProductsList({ products, sortBy, selectedCategory }) {
   const [currentPage, setCurrentPage] = useState(1)
 
   useEffect(() => {
