@@ -1,5 +1,17 @@
-import React from "react"
-export function FilterBar({ sortBy, setSortBy, searchText, setSearchText }) {
+import React, { useEffect } from "react"
+import { fetchCatgoryFromApi } from "./../../API/fetchFromApi"
+import { useDispatch, useSelector } from "react-redux"
+import { CATEGORY_URL } from "./../../API/constants"
+import ShowCategoryDropDown from "./ShowCategory"
+
+export function FilterBar({
+  sortBy,
+  setSortBy,
+  searchText,
+  setSearchText,
+  selectedCategory,
+  setselectedCategory,
+}) {
   const changeOrder = () => {
     sortBy === "asc" ? setSortBy("dsc") : setSortBy("asc")
   }
@@ -19,6 +31,40 @@ export function FilterBar({ sortBy, setSortBy, searchText, setSearchText }) {
           <option value="dsc">Sort By Dscending</option>
         </select>
       </div>
+
+      <ShowCategory
+        selectedCategory={selectedCategory}
+        setselectedCategory={setselectedCategory}
+      />
     </div>
   )
+}
+
+function ShowCategory({ selectedCategory, setselectedCategory }) {
+  const dispatch = useDispatch()
+  const category = useSelector((state) => state.categories)
+
+  const fetchCategory = () => {
+    fetchCatgoryFromApi(CATEGORY_URL, dispatch)
+  }
+  useEffect(() => {
+    fetchCategory()
+  }, [])
+
+  if (category.fetching) return <div>Fetching Categories</div>
+  else if (category.error)
+    return (
+      <>
+        <span>Error While Fetching Categories</span>
+        <button onClick={fetchCategory}>Retry</button>
+      </>
+    )
+  else
+    return (
+      <ShowCategoryDropDown
+        selectedCategory={selectedCategory}
+        setselectedCategory={setselectedCategory}
+        category={category.categories}
+      />
+    )
 }
